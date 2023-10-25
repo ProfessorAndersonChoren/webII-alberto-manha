@@ -12,7 +12,11 @@
     <main>
         <form action="converter.php" method="post">
             <label lang="pt" for="money">Valor monetário</label>
-            <input type="text" pattern="" id="money" name="money">
+            <input type="text" pattern="^\d*[0-9](\.\d*[0-9])?$" id="money" name="money" required>
+            <select id="coin" name="coin">
+                <option value="dollar">Dólar</option>
+                <option value="euro">Euro</option>
+            </select>
             <button type="submit" lang="pt">Converter</button>
         </form>
     </main>

@@ -1,24 +1,33 @@
 <?php
+session_start();
 if (!empty($_POST)) {
     $money = $_POST["money"];
-    $option = "dolar";
+    $option = $_POST["coin"];
 
     switch ($option) {
-        case "dolar":
-            convertToDolar($money);
+        case "dollar":
+            $dollar = convertToDollar($money);
+            $_SESSION["amount_dollar"] = "R$ $money equivale à $ $dollar";
             break;
         case "euro":
-            convertToEuro($money);
+            $euro = convertToEuro($money);
+            $_SESSION["amount_euro"] = "R$ $money equivale à $euro";
             break;
     }
+    header("location:message.php");
 } else {
-    // TODO Redirecionar para uma página de mensagem
+    $_SESSION["error"] = "Ops. Houve um erro inesperado!!!";
+    header("location:message.php");
 }
 
-function convertToDolar($money){
-
+function convertToDollar($money)
+{
+    $money = $money / 4.99;
+    return number_format($money,2,",",".");
 }
 
-function convertToEuro($money){
-    
+function convertToEuro($money)
+{
+    $money = $money / 5.28;
+    return number_format($money,2,",",".");
 }
