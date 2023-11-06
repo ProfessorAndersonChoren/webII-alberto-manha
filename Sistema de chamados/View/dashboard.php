@@ -1,3 +1,5 @@
+<?php require_once("../Controller/auth_verify.php"); ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,10 +16,9 @@
             <a href="add-new-call.html" class="text-white text-decoration-none">Abrir chamado</a>
             <a href="list-calls.html" class="text-white text-decoration-none">Listar chamados</a>
         </div>
-        <a href="index.html" class="text-white text-decoration-none">Sair</a>
+        <a href="../Controller/auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
     </nav>
     <main class="text-center">
-        <?php session_start(); ?>
         <h1>Bem-vindo(a) ao nosso sistema <?= $_SESSION["user_data"] ?></h1>
         <img src="https://d1ltgr77xghfz9.cloudfront.net/wp-content/uploads/sites/2/2017/12/o-que-e-help-desk.jpg" alt="Foto suporte" width=500>
     </main>
