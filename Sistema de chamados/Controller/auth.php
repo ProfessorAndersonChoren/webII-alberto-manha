@@ -14,7 +14,7 @@ switch ($_GET["operation"]) {
 function logout()
 {
     unset($_SESSION["user_data"]);
-    header("../index.html");
+    header("location:../index.html");
     exit;
 }
 

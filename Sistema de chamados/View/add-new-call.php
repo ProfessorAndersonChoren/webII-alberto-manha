@@ -1,4 +1,6 @@
-
+<?php
+require dirname(__DIR__) . "/Controller/auth_verify.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,10 +17,10 @@
       <a href="add-new-call.html" class="text-white text-decoration-none">Abrir chamado</a>
       <a href="list-calls.html" class="text-white text-decoration-none">Listar chamados</a>
     </div>
-    <a href="../Controller/auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
+    <a href="../Controller/Auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
   </nav>
   <main class="bg-primary card d-flex align-items-center mt-5">
-    <form action="#" method="post" class="w-75 p-3">
+    <form action="../Controller/Call.php?operation=insert" method="post" class="w-75 p-3">
       <label for="user_name">Nome do usuário</label>
       <input type="text" id="user_name" name="user_name" class="form-control" required />
       <label for="user_email">Email do usuário</label>

@@ -1,4 +1,6 @@
-<?php require_once("../Controller/auth_verify.php"); ?>
+<?php
+require dirname(__DIR__) . "/Controller/auth_verify.php";
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -13,10 +15,10 @@
 <body class="m-5">
     <nav class="bg-info d-flex justify-content-between p-3">
         <div>
-            <a href="add-new-call.html" class="text-white text-decoration-none">Abrir chamado</a>
-            <a href="list-calls.html" class="text-white text-decoration-none">Listar chamados</a>
+            <a href="add-new-call.php" class="text-white text-decoration-none">Abrir chamado</a>
+            <a href="list-calls.php" class="text-white text-decoration-none">Listar chamados</a>
         </div>
-        <a href="../Controller/auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
+        <a href="../Controller/Auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
     </nav>
     <main class="text-center">
         <h1>Bem-vindo(a) ao nosso sistema <?= $_SESSION["user_data"] ?></h1>
