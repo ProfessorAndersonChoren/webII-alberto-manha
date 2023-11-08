@@ -1,6 +1,9 @@
 <?php
+
+namespace QI\SistemaDeChamados\Controller;
+
 session_start();
-switch($_GET["operation"]){
+switch ($_GET["operation"]) {
     case "insert":
         insert();
         break;
@@ -11,8 +14,9 @@ switch($_GET["operation"]){
         break;
 }
 
-function insert(){
-    if(empty($_POST)){
+function insert()
+{
+    if (empty($_POST)) {
         $_SESSION["msg_error"] = "Ops, houve um erro inesperado!!!";
         header("location:../View/message.php");
         exit;
