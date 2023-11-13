@@ -4,16 +4,19 @@ namespace QI\SistemaDeChamados\Model;
 
 class Call
 {
-    private $user_name;
-    private $user_email;
-    private $pc_number;
-    private $floor;
-    private $class;
+    private $id;
+    private $user;
+    private $equipment;
     private $classification;
     private $description;
     private $notes;
 
-
+    public function __construct($user,$equipment, $classification,$description){
+        $this->user = $user;
+        $this->equipment = $equipment;
+        $this->classification = $classification;
+        $this->description = $description;
+    }
 
     public function __get($attribute)
     {
