@@ -14,8 +14,8 @@ require dirname(__DIR__) . "/Controller/auth_verify.php";
 <body class="m-5">
   <nav class="bg-info d-flex justify-content-between p-3">
     <div>
-      <a href="add-new-call.html" class="text-white text-decoration-none">Abrir chamado</a>
-      <a href="list-calls.html" class="text-white text-decoration-none">Listar chamados</a>
+      <a href="add-new-call.php" class="text-white text-decoration-none">Abrir chamado</a>
+      <a href="list-calls.php" class="text-white text-decoration-none">Listar chamados</a>
     </div>
     <a href="../Controller/Auth.php?operation=logout" class="text-white text-decoration-none">Sair</a>
   </nav>
@@ -29,8 +29,8 @@ require dirname(__DIR__) . "/Controller/auth_verify.php";
       <input type="number" id="pc_number" name="pc_number" class="form-control" required />
       <label for="floor">Andar do equipamento</label>
       <input type="number" id="floor" name="floor" class="form-control" required />
-      <label for="class">Sala do equipamento</label>
-      <input type="number" id="class" name="class" class="form-control" required />
+      <label for="room">Sala do equipamento</label>
+      <input type="number" id="room" name="room" class="form-control" required />
       <label for="classification" class="d-block">Classificação</label>
       <select name="classification" id="classification" class="form-select">
         <option value="low">Baixo</option>

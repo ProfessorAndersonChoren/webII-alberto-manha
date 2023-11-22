@@ -12,7 +12,7 @@ create table if not exists equipments(
     room tinyint not null
 );
 create table if not exists calls(
-	id tinyint unsigned primary key not null,
+	id tinyint unsigned primary key auto_increment,
     user_id tinyint unsigned not null,
     equipment_id tinyint unsigned not null,
     classification varchar(5) not null,

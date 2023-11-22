@@ -11,6 +11,13 @@ class Call
     private $description;
     private $notes;
 
+    /**
+     * Create a new Call object
+     * @param User $user
+     * @param Equipment $equipment
+     * @param string $classification
+     * @param string $description
+     */
     public function __construct($user,$equipment, $classification,$description){
         $this->user = $user;
         $this->equipment = $equipment;
