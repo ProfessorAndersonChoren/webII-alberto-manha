@@ -26,4 +26,9 @@ class CallRepository{
         $stmt->bindParam(5,$call->notes);
         return $stmt->execute();
     }
+
+    public function findAll(){
+        $stmt = $this->connection->query("SELECT c.*,u.name FROM calls c inner join users u on c.user_id = u.id;");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
