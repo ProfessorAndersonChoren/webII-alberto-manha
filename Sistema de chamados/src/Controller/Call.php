@@ -56,9 +56,10 @@ function insert()
         }else{
             $_SESSION["msg_warning"] = "Lamento, não foi possível registrar seu chamado!!!";
         }
-    }catch(Exception $e){
+    }catch(Exception $exception){
         $_SESSION["msg_error"] = "Ops. Houve um erro inesperado em nossa base de dados!!!";
-        // TODO Criar um sistema de logs
+        $log = $exception->getFile()." - ".$exception->getLine()." - ".$exception->getMessage();
+        Logger::writeLog($log);
     }finally{
         header("location:../View/message.php");
         exit;
