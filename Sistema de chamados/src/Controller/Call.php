@@ -47,29 +47,38 @@ function insert()
         $_POST["classification"],
         $_POST["description"],
     );
-    if(!empty($_POST["notes"])){
+    if (!empty($_POST["notes"])) {
         $call->notes = $_POST["notes"];
     }
     // TODO Validar os dados informados
-    try{
+    try {
         $call_repository = new CallRepository();
         $result = $call_repository->insert($call);
-        if($result){
+        if ($result) {
             $_SESSION["msg_success"] = "Parabéns, seu chamado foi registrado com sucesso!!!";
-        }else{
+        } else {
             $_SESSION["msg_warning"] = "Lamento, não foi possível registrar seu chamado!!!";
         }
-    }catch(Exception $exception){
+    } catch (Exception $exception) {
         $_SESSION["msg_error"] = "Ops. Houve um erro inesperado em nossa base de dados!!!";
-        $log = $exception->getFile()." - ".$exception->getLine()." - ".$exception->getMessage();
+        $log = $exception->getFile() . " - " . $exception->getLine() . " - " . $exception->getMessage();
         Logger::writeLog($log);
-    }finally{
+    } finally {
         header("location:../View/message.php");
         exit;
     }
 }
 
-function findAll(){
-    $call_repository = new CallRepository();
-    $result = $call_repository->findAll();
+function findAll()
+{
+    try {
+        $call_repository = new CallRepository();
+        $_SESSION["list_of_calls"] = $call_repository->findAll();
+        header("location:../View/list-of-calls.php");
+    } catch (Exception $exception) {
+        $_SESSION["msg_error"] = "Ops. Houve um erro inesperado em nossa base de dados!!!";
+        $log = $exception->getFile() . " - " . $exception->getLine() . " - " . $exception->getMessage();
+        Logger::writeLog($log);
+        header("location:../View/message.php");
+    }
 }
