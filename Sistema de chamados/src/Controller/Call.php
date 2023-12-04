@@ -88,28 +88,53 @@ function findAll()
     }
 }
 
-function findOne(){}
-
-function delete(){
+function findOne()
+{
     $id = $_GET["code"];
-    if(empty($id)){
+    if (empty($id)) {
+        $_SESSION["msg_error"] = "O código do chamado é inválido!!!";
+        header("location:../View/message.php");
+        exit;
+    }
+    try {
+        $call_repository = new CallRepository();
+        $call = $call_repository->findOne($id);
+        if (!empty($call)) {
+            $_SESSION["call"] = $call;
+            header("location:../View/edit-call.php");
+        } else {
+            $_SESSION["msg_warning"] = "O chamado $id não existe em nossa base de dados!!!";
+            header("location:../View/message.php");
+        }
+    } catch (Exception $exception) {
+        $_SESSION["msg_error"] = "Ops. Houve um erro insperado em nossa base de dados!!!";
+        $log = $exception->getFile() . " - " . $exception->getLine() . " - " . $exception->getMessage();
+        Logger::writeLog($log);
+        header("location:../View/message.php");
+    }
+}
+
+function delete()
+{
+    $id = $_GET["code"];
+    if (empty($id)) {
         $_SESSION["msg_error"] = "O código do chamado é inválido!!!";
         header("../View/message.php");
         exit;
     }
-    try{
+    try {
         $call_repository = new CallRepository();
         $result = $call_repository->delete($id);
-        if($result){
+        if ($result) {
             $_SESSION["msg_success"] = "Chamado removido com sucesso!!!";
-        }else{
+        } else {
             $_SESSION["msg_warning"] = "Lamento, não foi possível remover o chamado!!!";
         }
-    }catch(Exception $exception){
+    } catch (Exception $exception) {
         $_SESSION["msg_error"] = "Ops. Houve um erro inesperado em nossa base de dados!!!";
         $log = $exception->getFile() . " - " . $exception->getLine() . " - " . $exception->getMessage();
         Logger::writeLog($log);
-    }finally{
+    } finally {
         header("location:../View/message.php");
     }
 }

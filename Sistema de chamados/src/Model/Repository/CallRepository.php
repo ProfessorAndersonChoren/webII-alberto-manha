@@ -35,9 +35,12 @@ class CallRepository{
     /**
      * Find a call from of code
      * @param int $id
-     * @return mixed|false
+     * @return mixed
      */
-    public function findOne($id){}
+    public function findOne($id){
+        $stmt = $this->connection->query("select c.*,e.floor,e.room from calls c inner join equipments e on c.equipment_id = e.id where c.id=$id;");
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     /**
      * Remove a call from of code

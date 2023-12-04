@@ -47,7 +47,7 @@ function login()
 
     foreach ($users as $user) {
         if ($user["email"] == $email && password_verify($password, $user["password"])) {
-            $_SESSION["user_data"] = $user["name"];
+            $_SESSION["user_data"] = $user;
             header("location:../View/dashboard.php");
             exit;
         }
