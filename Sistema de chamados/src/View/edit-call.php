@@ -24,15 +24,15 @@ require dirname(__DIR__) . "/Controller/auth_verify.php";
     <form action="../Controller/Call.php?operation=edit" method="post" class="w-75 p-3">
       <input type="hidden" id="code" name="code" value="<?= $_SESSION["call"]["id"] ?>">
       <label for="user_name">Nome do usuário</label>
-      <input type="text" id="user_name" name="user_name" class="form-control" required value="<?= $_SESSION["user_data"]["name"] ?>" />
+      <input type="text" id="user_name" name="user_name" class="form-control" required value="<?= $_SESSION["user_data"]["name"] ?>" readonly/>
       <label for="user_email">Email do usuário</label>
-      <input type="email" id="user_email" name="user_email" class="form-control" required value="<?= $_SESSION["user_data"]["email"] ?>" />
+      <input type="email" id="user_email" name="user_email" class="form-control" required value="<?= $_SESSION["user_data"]["email"] ?>" readonly/>
       <label for="pc_number">Número do equipamento</label>
-      <input type="number" id="pc_number" name="pc_number" class="form-control" required value="<?= $_SESSION["call"]["equipment_id"] ?>" />
+      <input type="number" id="pc_number" name="pc_number" class="form-control" required value="<?= $_SESSION["call"]["equipment_id"] ?>" readonly/>
       <label for="floor">Andar do equipamento</label>
-      <input type="number" id="floor" name="floor" class="form-control" required value="<?= $_SESSION["call"]["floor"] ?>" />
+      <input type="number" id="floor" name="floor" class="form-control" required value="<?= $_SESSION["call"]["floor"] ?>" readonly/>
       <label for="room">Sala do equipamento</label>
-      <input type="number" id="room" name="room" class="form-control" required value="<?= $_SESSION["call"]["room"] ?>" />
+      <input type="number" id="room" name="room" class="form-control" required value="<?= $_SESSION["call"]["room"] ?>" readonly/>
       <label for="classification" class="d-block">Classificação</label>
       <select name="classification" id="classification" class="form-select">
         <option value="low">Baixo</option>

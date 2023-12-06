@@ -24,6 +24,9 @@ switch ($_GET["operation"]) {
     case "delete":
         delete();
         break;
+    case "edit":
+        update();
+        break;
     default:
         $_SESSION["msg_warning"] = "Operação inválida!!!";
         header("location:../View/message.php");
@@ -137,4 +140,23 @@ function delete()
     } finally {
         header("location:../View/message.php");
     }
+}
+
+function update(){
+    if(empty($_POST)){
+        $_SESSION["msg_error"] = "Ops. Houve um erro inesperado em nosso sistema!!!";
+        header("location:../View/message.php");
+        exit;
+    }
+    $user = new User($_POST["user_email"]);
+    $equipment = new Equipment(
+        $_POST["floor"],
+        $_POST["room"]
+    );
+    $call = new Call(
+        $user,
+        $equipment,
+        $_POST["classification"],
+        $_POST["description"]
+    );
 }

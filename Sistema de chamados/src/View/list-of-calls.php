@@ -16,6 +16,7 @@ require dirname(__DIR__) . "/Controller/auth_verify.php";
 <body class="m-5">
     <nav class="bg-info d-flex justify-content-between p-3">
         <div>
+            <a href="dashboard.php" class="text-white text-decoration-none">Dashboard</a>
             <a href="add-new-call.php" class="text-white text-decoration-none">Abrir chamado</a>
             <a href="#" class="text-white text-decoration-none">Listar chamados</a>
         </div>
@@ -66,8 +67,8 @@ require dirname(__DIR__) . "/Controller/auth_verify.php";
                                     <i class="bi bi-pencil"></i>
                                 </a>
                                 <a href="../Controller/Call.php?operation=delete&code=<?= $call["id"] ?>" class="btn btn-danger" title="Deletar o chamado">
-                                <i class="bi bi-trash"></i>
-                            </a>
+                                    <i class="bi bi-trash"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
